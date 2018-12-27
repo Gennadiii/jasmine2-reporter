@@ -8,7 +8,7 @@ const DEFAULTS = Object.freeze({
   inColors: colors.supportsColor,
   indent: '\t',
   namesInColors: false,
-  startingSpec: false,
+  startingSpec: true,
   passedSpec: true,
   disabledSpec: true,
   pendingSpec: true,
@@ -32,6 +32,7 @@ const DEFAULTS = Object.freeze({
     suite: colors.strikethrough('»  '),
     starting: colors.strikethrough('▻  '),
   },
+  log: console.log, // eslint-disable-line no-console
 });
 
 function configOpts(options) {
@@ -53,6 +54,7 @@ function configOpts(options) {
   options.inColors = 'inColors' in options ? options.inColors : DEFAULTS.inColors;
   options.namesInColors = 'namesInColors' in options ? options.namesInColors : DEFAULTS.namesInColors;
   options.startingSpec = 'startingSpec' in options ? options.startingSpec : DEFAULTS.startingSpec;
+  options.log = 'log' in options ? options.log : DEFAULTS.log;
 
   options.symbols = {
     passed: options.symbols && options.symbols.passed !== undefined ?

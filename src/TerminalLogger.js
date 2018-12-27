@@ -180,13 +180,13 @@ class TerminalLogger {
       stuff = (`${stuff}`)
         .replace(/\x1B\[\d+m/g, ''); // eslint-disable-line no-control-regex
     }
-    console.log(this.createIndent() + stuff); // eslint-disable-line no-console
+    this.options.log(this.createIndent() + stuff);
     this.lastNewLine = false;
   }
 
   newLine(force) {
     if (!this.lastNewLine || force) {
-      console.log(''); // eslint-disable-line no-console
+      this.options.log('');
       this.lastNewLine = true;
     }
   }
